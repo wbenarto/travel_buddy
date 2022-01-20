@@ -3,7 +3,7 @@ import {alpha, makeStyles} from '@material-ui/core/styles'
 export default makeStyles((theme)=> ({
     appBar:{
         backgroundColor: 'teal',
-        height: '180px'
+        height: '140px'
     },
     title: {
         display: 'flex',
