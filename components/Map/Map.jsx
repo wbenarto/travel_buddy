@@ -18,7 +18,6 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
 
     return (
         <>
-            {/* <Script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`} strategy="lazyOnload" /> */}
             <div className={classes.mapContainer}>
 
                 <GoogleMapReact bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
