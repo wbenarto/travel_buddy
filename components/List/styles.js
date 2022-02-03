@@ -11,13 +11,20 @@ export default makeStyles((theme)=>({
         height: '600px', display: 'flex', justifyContent: 'center', alignItems: 'center'
     },
     container: {
-        padding: '25px'
+        padding: '25px',
+        [theme.breakpoints.down('sm')]: {
+            height: '60vh',
+            overflow: 'scroll'
+        },
+        "& h4" : {
+            fontSize: '1.5rem'
+        }
     }, 
     marginBottom: {
         marginBottom: '30px'
     },
     list: {
-        height: '50vh', overflow: 'auto',
+        height: '65vh', overflow: 'auto',
     }
 
 }))

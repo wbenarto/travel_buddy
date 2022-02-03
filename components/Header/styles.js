@@ -2,30 +2,47 @@ import {alpha, makeStyles} from '@material-ui/core/styles'
 
 export default makeStyles((theme)=> ({
     appBar:{
-        backgroundColor: 'teal',
+        backgroundColor: 'white',
         height: '140px'
+    },
+    logo: {
+        width: '100px',
+        height: '50px',
     },
     title: {
         display: 'flex',
-        marginTop:'40px',
+        marginTop:'20px',
+        fontFamily: 'Secular One',
+        color: 'teal',
+        letterSpacing: '.1em',
         [theme.breakpoints.up('sm')]: {
             display: 'block'
+        },
+    },
+    subtitle: {
+        display: 'flex',
+        marginTop:'20px',
+        color: 'black',
+        [theme.breakpoints.down('sm')]: {
+            display: 'block',
+            fontSize: '1rem'
         },
     },
     box:{
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center'
-    
+        alignItems: 'center',
+        color: "black",
+        
     },
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: alpha(theme.palette.common.white, 0.15),
+        backgroundColor: alpha(theme.palette.common.black, 0.15),
         '&:hover': {backgroundColor: alpha(theme.palette.common.white, 0.25)},
         marginRight: theme.spacing(2),
         marginLeft: 0,
-        marginTop:'40px',
+        marginTop:'20px',
         width: '100%',
         [theme.breakpoints.up('sm')]: {marginLeft: theme.spacing(3), width:"auto"},
     }, 

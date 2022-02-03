@@ -7,6 +7,8 @@ import {CssBaseline, Grid} from '@material-ui/core'
 import styles from '../styles/Home.module.css'
 import { getPlacesData, getWeatherData } from './api/index'
 import { CodeOutlined, LocationCityRounded } from '@material-ui/icons'
+import Script from 'next/script'
+
 
 export default function Home() {
   const [city, setCity] = useState([])
@@ -15,7 +17,7 @@ export default function Home() {
   const [filteredPlaces, setFilteredPlaces] = useState([])
 
   const [childClicked, setChildClicked] = useState(null)
-  const [coordinates, setCoordinates] = useState({})
+  const [coordinates, setCoordinates] = useState( {})
   const [bounds, setBounds] = useState({})
   const [isLoading, setIsLoading] = useState(false)
 
@@ -24,10 +26,13 @@ export default function Home() {
 
   const [autocomplete, setAutocomplete] = useState(null);
 
+  const defaultCenterGoogle = {lat: 37.774929499999985, lng: -122.4194155}
+
   console.log(coordinates)
   // Only on load
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+      
       setCoordinates({lat: latitude, lng: longitude})
     })
   }, [])
@@ -75,10 +80,13 @@ export default function Home() {
 
   return (
     <>
+      <Script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`} strategy="lazyOnload" />
+
       <CssBaseline />
-      <Header onLoad={onLoad} onPlaceChanged={onPlaceChanged} />
-      <Grid container spacing={3} style={{width:'100%'}}>
-        <Grid item xs={12} md={4}>
+      
+      <Grid container style={{width:'100%'}}>
+        <Grid item xs={12} md={6}>
+          <Header onLoad={onLoad} onPlaceChanged={onPlaceChanged} />
           <List 
             isLoading={isLoading} 
             places={filteredPlaces?.length ? filteredPlaces : places} 
@@ -88,9 +96,12 @@ export default function Home() {
             rating={rating}
             setRating={setRating} />
         </Grid>
-        <Grid item xs={12} md={8}>
-          <Map setCoordinates={setCoordinates}
+        <Grid item xs={12} md={6}>
+          <Map 
+          isLoading={isLoading}
+          setCoordinates={setCoordinates}
           setBounds={setBounds}
+          defaultCoord={defaultCenterGoogle}
           coordinates={coordinates}
           places={filteredPlaces?.length ? filteredPlaces : places}
           setChildClicked={setChildClicked}
