@@ -14,13 +14,16 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
     const classes = useStyles();
     const isDesktop = useMediaQuery('(min-width:600px)')
 
-    console.log({ weatherData })
-
     return (
         <>
-            <div className={classes.mapContainer}>
+            {/* <Script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`} strategy='beforeInteractive' /> */}
 
-                <GoogleMapReact bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+            <div className={classes.mapContainer}>
+                <h1>Maps</h1>
+
+                <GoogleMapReact
+                    bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
+                    strategy='beforeInteractive'
                     defaultCenter={defaultCoord}
                     center={coordinates}
                     defaultZoom={14}

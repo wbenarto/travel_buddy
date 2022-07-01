@@ -28,7 +28,7 @@ export default function Home() {
 
   const defaultCenterGoogle = {lat: 37.774929499999985, lng: -122.4194155}
 
-  console.log(coordinates)
+  // console.log(coordinates)
   // Only on load
   useEffect(()=>{
     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
