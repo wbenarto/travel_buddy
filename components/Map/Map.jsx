@@ -3,6 +3,8 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
 import Rating from '@material-ui/lab/Rating'
 import Script from 'next/script'
+import Head from "next/head";
+
 
 
 import mapStyles from './mapStyles'
@@ -16,14 +18,16 @@ const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, 
 
     return (
         <>
-            {/* <Script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`} strategy='beforeInteractive' /> */}
+            <Head>
+                <script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`} />
+            </Head>
 
             <div className={classes.mapContainer}>
+
                 <h1>Maps</h1>
 
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
-                    strategy='beforeInteractive'
                     defaultCenter={defaultCoord}
                     center={coordinates}
                     defaultZoom={14}

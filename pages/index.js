@@ -8,6 +8,7 @@ import styles from '../styles/Home.module.css'
 import { getPlacesData, getWeatherData } from './api/index'
 import { CodeOutlined, LocationCityRounded } from '@material-ui/icons'
 import Script from 'next/script'
+import Head from "next/head";
 
 
 export default function Home() {
@@ -79,7 +80,10 @@ export default function Home() {
   // },[city])
 
   return (
-    <>
+    <div>
+      <Head>
+        <script src={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}   />
+      </Head>
       <CssBaseline />
       
       <Grid container style={{width:'100%'}}>
@@ -107,6 +111,6 @@ export default function Home() {
           />
         </Grid>
       </Grid>      
-    </>
+    </div>
   )
 }
