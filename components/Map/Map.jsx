@@ -1,6 +1,8 @@
 import GoogleMapReact from 'google-map-react';
 import { Paper, Typography, useMediaQuery } from '@material-ui/core'
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined'
+import { Loader } from "@googlemaps/js-api-loader";
+
 import Rating from '@material-ui/lab/Rating'
 import Script from 'next/script'
 import Head from "next/head";
